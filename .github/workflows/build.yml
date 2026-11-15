@@ -62,7 +62,7 @@ jobs:
         if: steps.source.outputs.has_source == 'true'
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Setup Java 21
         if: steps.source.outputs.has_source == 'true'
@@ -87,6 +87,9 @@ jobs:
         run: |
           cd "${{ steps.source.outputs.workdir }}"
           npm install --legacy-peer-deps
+          npm install --legacy-peer-deps
+npm install --no-save --legacy-peer-deps react-is
+npm run build
           npm run build
           if [ ! -d "android" ]; then
             npx cap add android

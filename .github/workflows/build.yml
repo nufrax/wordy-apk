@@ -86,7 +86,7 @@ jobs:
         if: steps.source.outputs.has_source == 'true'
         run: |
           cd "${{ steps.source.outputs.workdir }}"
-          npm install
+          npm install --legacy-peer-deps
           npm run build
           if [ ! -d "android" ]; then
             npx cap add android

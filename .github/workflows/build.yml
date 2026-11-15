@@ -86,11 +86,9 @@ jobs:
         if: steps.source.outputs.has_source == 'true'
         run: |
           cd "${{ steps.source.outputs.workdir }}"
-          npm install --legacy-peer-deps
-          
+          npm install --legacy-peer-deps        
 npm install --no-save --legacy-peer-deps react-is
-npm run build
-          npm run build
+npm run build        
           if [ ! -d "android" ]; then
             npx cap add android
           fi
